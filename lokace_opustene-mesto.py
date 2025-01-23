@@ -1,6 +1,5 @@
 import random
 
-# Globální proměnné pro sledování, zda hráč už prozkoumal obchod a hluk
 prozkoumal_obchod = False
 prozkoumal_hluk = False
 
@@ -9,7 +8,6 @@ def opustene_mesto():
     while True:
         print("\nDorazil jsi do opuštěného města. Všude kolem jsou trosky a ticho tě tíží.")
         
-        # Nabídka možností podle toho, co už hráč prozkoumal
         if prozkoumal_obchod and prozkoumal_hluk:
             volba = input("Co uděláš dál? (2 = Schovat se a počkat): ")
         elif prozkoumal_obchod:
@@ -19,7 +17,6 @@ def opustene_mesto():
         else:
             volba = input("Vidíš otevřený obchod a slyšíš vzdálený hluk. Co uděláš? (1 = Prozkoumat obchod, 2 = Schovat se a počkat, 3 = Jít za hlukem): ")
 
-        # Možnost 1: Prozkoumat obchod
         if volba == "1" and not prozkoumal_obchod:
             if random.randint(1, 2) == 1:
                 print("Našel jsi zásoby jídla a vody! Získáváš 2 body za přežití.")
@@ -28,7 +25,6 @@ def opustene_mesto():
             prozkoumal_obchod = True
             print("Vracíš se zpátky na začátek.")
 
-        # Možnost 2: Schovat se a počkat
         elif volba == "2":
             if random.randint(1, 2) == 1:
                 print("Počkání se vyplatilo, hluk utichl. Získáváš 1 bod za obezřetnost.")
@@ -47,7 +43,6 @@ def opustene_mesto():
                     print("Neplatná volba, hlídka tě dostala. Hra končí.")
                     return
 
-        # Možnost 3: Jít za hlukem
         elif volba == "3" and not prozkoumal_hluk:
             if random.randint(1, 3) == 1:
                 print("Našel jsi přeživšího, který ti pomůže! Získáváš 3 body za spojenectví.")
@@ -58,9 +53,7 @@ def opustene_mesto():
             prozkoumal_hluk = True
             print("Vracíš se zpátky na začátek.")
 
-        # Kontrola neplatné volby
         else:
             print("Neplatná volba. Zkus to znovu.")
 
-# Volání hlavní funkce pro testování
 opustene_mesto()
